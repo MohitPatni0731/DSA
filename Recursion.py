@@ -65,3 +65,39 @@ def fib(n):
     else:
         return fib(n-1)+fib(n-2)
 print(fib(6))'''
+
+
+#https://www.classes.cs.uchicago.edu/archive/2017/fall/12100-1/pp/bac-recursion.html
+# Warm-up exercise #1: What is the output of the following code?
+'''def mystery(a, b, c, d):
+  if c == 0:
+    return d
+  elif c % 2 == 0:
+    return b + mystery(a, b, c - 2, d)
+  else:
+    return a + mystery(a, b, c - 1, d)
+
+print("Warmup Exercise #1")
+print(mystery("x", "y", 6, "z"))
+print(mystery("x", "y", 5, "z"))
+print()'''
+
+'''
+SOLUTION 1:
+
+For the first print statement that is ("x", "y", 6, "z")
+It goes like this:
+b + mystery(a,b,4,d)
+b + mystery(a,b,2,d)
+b + mystery(a,b,0,d) as hits 0 so in the next iteration it will satisfy first if statement
+d
+So - b+b+b+d -> yyyz
+
+For the second statenent ("x", "y", 5, "z")
+It goes like this:
+a + (a,b,4,d)
+b + (a,b,2,d)
+b + (a,b,0,d) again hits 0 so will go in 1st if statement
+d
+So - a+b+b+d -> xyyz
+'''
