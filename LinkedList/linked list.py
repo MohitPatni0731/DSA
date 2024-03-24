@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
-class LinkedList:
+class LinkedList:   
     def __init__(self):
         self.head = None
 
@@ -88,6 +88,7 @@ linked_list = LinkedList()
 # Insert elements
 linked_list.insert_at_end(1)
 linked_list.insert_at_end(2)
+linked_list.insert_at_beginning(8)
 linked_list.insert_at_end(3)
 linked_list.insert_at_beginning(0)
 linked_list.insert_at_position(5, 2)
