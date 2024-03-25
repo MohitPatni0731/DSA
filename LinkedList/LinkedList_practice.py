@@ -18,18 +18,18 @@ class Node:
     
 
 class LinkedList:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initializes a new empty linked list.
         """
         self.head = None
 
-    def insert(self, data):
+    def insert(self, data) -> None:
         """
         Inserts a new node with the given value at the beginning of the list.
         Parameters:
         - value: The value to insert.
-        Time complexity - O(data)
+        Time complexity - O(1)
         Space complexity - O(1)
         """
         new_node = Node(data)
@@ -39,14 +39,15 @@ class LinkedList:
     def print(self):
         """
         Prints the contents of the list from head to tail.
-        Time complexity - O(data)
-        Space complexity - 
+        Time complexity - O(N)
+        Space complexity - O(1)
         """
         current_node = self.head
         while current_node:
             print(current_node.data, end=" --> ")
             current_node = current_node.next
         print("None")
+
 
     def delete(self, value):
         """

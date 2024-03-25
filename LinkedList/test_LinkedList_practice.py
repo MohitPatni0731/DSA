@@ -14,10 +14,12 @@ def test_node_next_element():
     assert node1.next == node2
 
 def test_inserted_element():
+    linked_list = LinkedList()
     data1 = 10
-    node = Node(data1)
-    assert node.data == data1
+    linked_list.insert(data1)
+    assert linked_list.head.data == data1
+
     data2 = "Mohit"
-    node2 = Node(data2)
-    assert node2.data == data2
+    linked_list.insert(data2)
+    assert linked_list.head.data == data2
 
