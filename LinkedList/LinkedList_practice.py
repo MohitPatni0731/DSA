@@ -29,6 +29,8 @@ class LinkedList:
         Inserts a new node with the given value at the beginning of the list.
         Parameters:
         - value: The value to insert.
+        Time complexity - O(data)
+        Space complexity - O(1)
         """
         new_node = Node(data)
         new_node.next = self.head
@@ -37,6 +39,8 @@ class LinkedList:
     def print(self):
         """
         Prints the contents of the list from head to tail.
+        Time complexity - O(data)
+        Space complexity - 
         """
         current_node = self.head
         while current_node:
