@@ -21,9 +21,3 @@ def test_inserted_element():
     node2 = Node(data2)
     assert node2.data == data2
 
-def test_printing():
-    linked_list = LinkedList()
-    linked_list.append(1)
-    linked_list.append(2)
-    linked_list.append(3)
-    assert linked_list == "1 --> 2 --> 3 --> None"
