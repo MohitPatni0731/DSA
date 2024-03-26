@@ -29,3 +29,10 @@ def test_printing():
     linked_list.insert(2)
     linked_list.insert(3)
     assert str(linked_list) == "3 --> 2 --> 1 --> None"
+
+    empty_llist = LinkedList()
+    assert str(empty_llist) == "None"
+
+    one_node_llist = LinkedList()
+    one_node_llist.insert(1)
+    assert str(one_node_llist) == "1 --> None"
