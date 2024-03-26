@@ -24,7 +24,9 @@ class LinkedList:
         """
         self.head = None
 
-    def insert(self, data) -> None:
+from typing import Any (on top of file)
+
+    def insert(self, data: Any) -> None:
         """
         Inserts a new node with the given value at the beginning of the list.
         Parameters:
