@@ -38,17 +38,23 @@ from typing import Any (on top of file)
         new_node.next = self.head
         self.head = new_node
 
-    def print(self):
+    def __str__(self) -> str:
         """
-        Prints the contents of the list from head to tail.
+        Returns a string representation of the list from head to tail.
         Time complexity - O(N)
         Space complexity - O(1)
         """
+        result = []
         current_node = self.head
         while current_node:
-            print(current_node.data, end=" --> ")
+            result.append(str(current_node.data) + " --> ")
             current_node = current_node.next
-        print("None")
+        result.append("None")
+        
+        return ''.join(result)
+        
+        def print(self) -> None:
+            print(str(self)) # calling str triggers __str__ function, here we have leveraged an existing function to implement another function.
 
 
     def delete(self, value):
