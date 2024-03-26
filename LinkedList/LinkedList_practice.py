@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 # Add typing to all methods
 # Add unit tests for all methods
 # Write time and space complexity for all methods as comment in their docstring
@@ -24,7 +25,6 @@ class LinkedList:
         """
         self.head = None
 
-from typing import Any (on top of file)
 
     def insert(self, data: Any) -> None:
         """
@@ -47,14 +47,16 @@ from typing import Any (on top of file)
         result = []
         current_node = self.head
         while current_node:
-            result.append(str(current_node.data) + " --> ")
+            result.append(str(current_node.data))
+            result.append(" --> ")
             current_node = current_node.next
         result.append("None")
         
-        return ''.join(result)
-        
-        def print(self) -> None:
-            print(str(self)) # calling str triggers __str__ function, here we have leveraged an existing function to implement another function.
+        return ''.join(result) 
+
+
+    def print_llist(self) -> None:
+        print(str(self)) # calling str triggers __str__ function, here we have leveraged an existing function to implement another function.
 
 
     def delete(self, value):
@@ -178,3 +180,6 @@ from typing import Any (on top of file)
         """
         pass
 
+linked_list = LinkedList()
+linked_list.append(1)
+print(linked_list)

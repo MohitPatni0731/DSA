@@ -23,3 +23,9 @@ def test_inserted_element():
     linked_list.insert(data2)
     assert linked_list.head.data == data2
 
+def test_printing():
+    linked_list = LinkedList()
+    linked_list.insert(1)
+    linked_list.insert(2)
+    linked_list.insert(3)
+    assert str(linked_list) == "3 --> 2 --> 1 --> None"
