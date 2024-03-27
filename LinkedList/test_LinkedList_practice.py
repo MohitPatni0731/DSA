@@ -36,3 +36,29 @@ def test_printing():
     one_node_llist = LinkedList()
     one_node_llist.insert(1)
     assert str(one_node_llist) == "1 --> None"
+
+def test_delete_first_occurrence():
+    llist = LinkedList()
+    llist.insert(1)
+    llist.insert(2)
+    llist.insert(3)
+    llist.insert(4)
+
+    llist.delete(3)
+    assert str(llist) == "4 --> 2 --> 1 --> None"
+
+def test_searching():
+    llist = LinkedList()
+
+    llist.insert(10)
+    llist.insert(20)
+    llist.insert(30)
+    llist.insert(40)
+
+    result = llist.search(20)
+
+    assert result.data == 20
+
+def test_empty():
+    linked_list = LinkedList()
+    assert linked_list.is_empty() == True

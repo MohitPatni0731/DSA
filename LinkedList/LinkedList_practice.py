@@ -1,8 +1,5 @@
 import pytest
 from typing import Any
-# Add typing to all methods
-# Add unit tests for all methods
-# Write time and space complexity for all methods as comment in their docstring
 
 class Node:
     def __init__(self, data) -> None: 
@@ -67,9 +64,21 @@ class LinkedList:
         Parameters:
         - value: The value of the node to delete.
         """
-        pass
+        current_node = self.head
+        previous_node = None
+        while current_node:
+            if current_node.data == value:
+                if previous_node:
+                    previous_node.next = current_node.next
+                else:
+                    self.head = current_node.next
+                del current_node
+                return
+            else:
+                previous_node = current_node
+                current_node = current_node.next
 
-    def search(self, value):
+    def search(self, value: Any):
         """
         Searches for a node with the given value.
         Parameters:
@@ -77,7 +86,12 @@ class LinkedList:
         Returns:
         - The node if found, else None.
         """
-        pass
+        current_node = self.head
+        while current_node:
+            if current_node.data == value:
+                return current_node
+            current_node = current_node.next               
+        return None
 
     def is_empty(self):
         """
@@ -85,7 +99,10 @@ class LinkedList:
         Returns:
         - True if the list is empty, False otherwise.
         """
-        pass
+        if self.head is None:
+            return True
+        else:
+            return False
 
     def size(self):
         """
@@ -180,6 +197,14 @@ class LinkedList:
         """
         pass
 
-linked_list = LinkedList()
-linked_list.append(1)
-print(linked_list)
+
+"""llist = LinkedList()
+llist.insert(1)
+llist.insert(2)
+llist.insert(3)
+llist.insert(4)
+
+llist.delete(3)
+
+llist.search(2)
+#print(llist)"""
