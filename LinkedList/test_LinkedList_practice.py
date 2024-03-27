@@ -62,3 +62,10 @@ def test_searching():
 def test_empty():
     linked_list = LinkedList()
     assert linked_list.is_empty() == True
+
+def test_size():
+    linked_list = LinkedList()
+    linked_list.insert(1)
+    linked_list.insert(2)
+    linked_list.insert(3)
+    assert linked_list.size() == 3

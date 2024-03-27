@@ -110,7 +110,14 @@ class LinkedList:
         Returns:
         - The size of the list.
         """
-        pass
+        current_node = self.head
+        count = 0
+        while current_node:
+            if current_node is not None:
+                count += 1
+            current_node = current_node.next
+        else:
+            return count
     
     def index(self, value):
         """
