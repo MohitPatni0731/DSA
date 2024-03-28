@@ -56,13 +56,15 @@ class LinkedList:
         print(str(self)) # calling str triggers __str__ function, here we have leveraged an existing function to implement another function.
 
 
-    def delete(self, value):
+    def delete(self, value: Any) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-linked-list-elements/description/
         
         Deletes the first occurrence of a node with the given value from the list.
         Parameters:
         - value: The value of the node to delete.
+        Time - O(N)
+        Space - O(1)
         """
         current_node = self.head
         previous_node = None
@@ -78,13 +80,15 @@ class LinkedList:
                 previous_node = current_node
                 current_node = current_node.next
 
-    def search(self, value: Any):
+    def search(self, value: Any) -> None:
         """
         Searches for a node with the given value.
         Parameters:
         - value: The value to search for.
         Returns:
         - The node if found, else None.
+        Time - O(N)
+        Space - 
         """
         current_node = self.head
         while current_node:
@@ -93,31 +97,33 @@ class LinkedList:
             current_node = current_node.next               
         return None
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         """
         Checks if the list is empty.
         Returns:
         - True if the list is empty, False otherwise.
+        Time - O(1)
+        Space - O(1)
         """
         if self.head is None:
             return True
         else:
             return False
 
-    def size(self):
+    def size(self) -> int:
         """
         Returns the number of nodes in the list.
         Returns:
         - The size of the list.
+        Time - O(N)
+        Space - O(1)
         """
         current_node = self.head
         count = 0
         while current_node:
-            if current_node is not None:
-                count += 1
+            count += 1
             current_node = current_node.next
-        else:
-            return count
+        return count
     
     def index(self, value):
         """
@@ -204,14 +210,3 @@ class LinkedList:
         """
         pass
 
-
-"""llist = LinkedList()
-llist.insert(1)
-llist.insert(2)
-llist.insert(3)
-llist.insert(4)
-
-llist.delete(3)
-
-llist.search(2)
-#print(llist)"""
