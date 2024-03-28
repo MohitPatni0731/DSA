@@ -1,8 +1,5 @@
 import pytest
 from typing import Any
-# Add typing to all methods
-# Add unit tests for all methods
-# Write time and space complexity for all methods as comment in their docstring
 
 class Node:
     def __init__(self, data) -> None: 
@@ -59,41 +56,74 @@ class LinkedList:
         print(str(self)) # calling str triggers __str__ function, here we have leveraged an existing function to implement another function.
 
 
-    def delete(self, value):
+    def delete(self, value: Any) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-linked-list-elements/description/
         
         Deletes the first occurrence of a node with the given value from the list.
         Parameters:
         - value: The value of the node to delete.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        current_node = self.head
+        previous_node = None
+        while current_node:
+            if current_node.data == value:
+                if previous_node:
+                    previous_node.next = current_node.next
+                else:
+                    self.head = current_node.next
+                del current_node
+                return
+            else:
+                previous_node = current_node
+                current_node = current_node.next
 
-    def search(self, value):
+    def search(self, value: Any) -> None:
         """
         Searches for a node with the given value.
         Parameters:
         - value: The value to search for.
         Returns:
         - The node if found, else None.
+        Time - O(N)
+        Space - 
         """
-        pass
+        current_node = self.head
+        while current_node:
+            if current_node.data == value:
+                return current_node
+            current_node = current_node.next               
+        return None
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         """
         Checks if the list is empty.
         Returns:
         - True if the list is empty, False otherwise.
+        Time - O(1)
+        Space - O(1)
         """
-        pass
+        if self.head is None:
+            return True
+        else:
+            return False
 
-    def size(self):
+    def size(self) -> int:
         """
         Returns the number of nodes in the list.
         Returns:
         - The size of the list.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        current_node = self.head
+        count = 0
+        while current_node:
+            count += 1
+            current_node = current_node.next
+        return count
     
     def index(self, value):
         """
@@ -180,6 +210,3 @@ class LinkedList:
         """
         pass
 
-linked_list = LinkedList()
-linked_list.append(1)
-print(linked_list)
