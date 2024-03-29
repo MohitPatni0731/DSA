@@ -32,8 +32,13 @@ class LinkedList:
         Space complexity - O(1)
         """
         new_node = Node(data)
-        new_node.next = self.head
-        self.head = new_node
+        if self.head is None:
+            self.head = new_node
+            return
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        last_node.next = new_node
 
     def __str__(self) -> str:
         """
@@ -80,7 +85,7 @@ class LinkedList:
                 previous_node = current_node
                 current_node = current_node.next
 
-    def search(self, value: Any) -> None:
+    def search(self, value: Any) -> Node | None:
         """
         Searches for a node with the given value.
         Parameters:
@@ -88,7 +93,7 @@ class LinkedList:
         Returns:
         - The node if found, else None.
         Time - O(N)
-        Space - 
+        Space - O(1)
         """
         current_node = self.head
         while current_node:
@@ -133,7 +138,16 @@ class LinkedList:
         Returns:
         - The index of the node if found, else -1.
         """
-        pass
+        index = 0
+        current = self.head
+
+        while current is not None:
+            if current.data == value:
+                return index
+            current = current.next
+            index += 1
+        return -1
+    
 
     def pop(self):
         """
@@ -149,7 +163,14 @@ class LinkedList:
         Parameters:
         - value: The value to append.
         """
-        pass
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            return
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        last_node.next = new_node
     
     def middle_element(self):
         """
