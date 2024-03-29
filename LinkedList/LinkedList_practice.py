@@ -34,11 +34,11 @@ class LinkedList:
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
-            return
-        last_node = self.head
-        while last_node.next:
-            last_node = last_node.next
-        last_node.next = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
 
     def __str__(self) -> str:
         """
@@ -170,20 +170,15 @@ class LinkedList:
         
         return current.data
 
-    def append(self, value):
+    def append(self, data):
         """
         Appends a new node with the given value to the end of the list.
         Parameters:
         - value: The value to append.
         """
-        new_node = Node(value)
-        if self.head is None:
-            self.head = new_node
-            return
-        last_node = self.head
-        while last_node.next:
-            last_node = last_node.next
-        last_node.next = new_node
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
     
     def middle_element(self):
         """

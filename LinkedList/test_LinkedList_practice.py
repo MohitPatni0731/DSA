@@ -95,7 +95,9 @@ def test_append():
     """
     linked_list = ll([])
     linked_list.append(1)
-    assert linked_list.head.data == 1
+    linked_list.append(2)
+    linked_list.append(3)
+    assert str(linked_list) == "3 --> 2 --> 1 --> None"
 
 def test_pop():
     linked_list = ll([1, 2, 3, 4])
