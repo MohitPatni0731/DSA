@@ -130,7 +130,7 @@ class LinkedList:
             current_node = current_node.next
         return count
     
-    def index(self, value):
+    def index(self, value) -> int:
         """
         Returns the position (0-based index) of the first occurrence of a node with the given value.
         Parameters:
@@ -149,13 +149,26 @@ class LinkedList:
         return -1
     
 
-    def pop(self):
+    def pop(self) -> int:
         """
         Removes and returns the last element from the list.
         Returns:
         - The data of the popped element.
         """
-        pass
+        if self.head is None:
+            return None
+        current = self.head
+        previous = None
+        while current.next is not None:
+            previous = current
+            current = current.next
+
+        if previous is None:  
+            self.head = None
+        else:
+            previous.next = None
+        
+        return current.data
 
     def append(self, value):
         """

@@ -97,3 +97,16 @@ def test_append():
     linked_list.append(1)
     assert linked_list.head.data == 1
 
+def test_pop():
+    linked_list = ll([1, 2, 3, 4])
+    popped = linked_list.pop()
+    assert popped == 4
+
+def test_pop_from_empty():
+    linked_list = ll([])
+    assert linked_list.pop() == None
+
+def test_pop_from_one_node():
+    linked_list = ll([2, 3])
+    linked_list.pop()
+    assert str(linked_list) == "2 --> None"
