@@ -1,8 +1,5 @@
 import pytest
 from typing import Any
-# Add typing to all methods
-# Add unit tests for all methods
-# Write time and space complexity for all methods as comment in their docstring
 
 class Node:
     def __init__(self, data) -> None: 
@@ -35,8 +32,13 @@ class LinkedList:
         Space complexity - O(1)
         """
         new_node = Node(data)
-        new_node.next = self.head
-        self.head = new_node
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
 
     def __str__(self) -> str:
         """
@@ -59,43 +61,76 @@ class LinkedList:
         print(str(self)) # calling str triggers __str__ function, here we have leveraged an existing function to implement another function.
 
 
-    def delete(self, value):
+    def delete(self, value: Any) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-linked-list-elements/description/
         
         Deletes the first occurrence of a node with the given value from the list.
         Parameters:
         - value: The value of the node to delete.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        current_node = self.head
+        previous_node = None
+        while current_node:
+            if current_node.data == value:
+                if previous_node:
+                    previous_node.next = current_node.next
+                else:
+                    self.head = current_node.next
+                del current_node
+                return
+            else:
+                previous_node = current_node
+                current_node = current_node.next
 
-    def search(self, value):
+    def search(self, value: Any) -> Node | None:
         """
         Searches for a node with the given value.
         Parameters:
         - value: The value to search for.
         Returns:
         - The node if found, else None.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        current_node = self.head
+        while current_node:
+            if current_node.data == value:
+                return current_node
+            current_node = current_node.next               
+        return None
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         """
         Checks if the list is empty.
         Returns:
         - True if the list is empty, False otherwise.
+        Time - O(1)
+        Space - O(1)
         """
-        pass
+        if self.head is None:
+            return True
+        else:
+            return False
 
-    def size(self):
+    def size(self) -> int:
         """
         Returns the number of nodes in the list.
         Returns:
         - The size of the list.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        current_node = self.head
+        count = 0
+        while current_node:
+            count += 1
+            current_node = current_node.next
+        return count
     
-    def index(self, value):
+    def index(self, value) -> int:
         """
         Returns the position (0-based index) of the first occurrence of a node with the given value.
         Parameters:
@@ -103,23 +138,47 @@ class LinkedList:
         Returns:
         - The index of the node if found, else -1.
         """
-        pass
+        index = 0
+        current = self.head
 
-    def pop(self):
+        while current is not None:
+            if current.data == value:
+                return index
+            current = current.next
+            index += 1
+        return -1
+    
+
+    def pop(self) -> int:
         """
         Removes and returns the last element from the list.
         Returns:
         - The data of the popped element.
         """
-        pass
+        if self.head is None:
+            return None
+        current = self.head
+        previous = None
+        while current.next is not None:
+            previous = current
+            current = current.next
 
-    def append(self, value):
+        if previous is None:  
+            self.head = None
+        else:
+            previous.next = None
+        
+        return current.data
+
+    def append(self, data):
         """
         Appends a new node with the given value to the end of the list.
         Parameters:
         - value: The value to append.
         """
-        pass
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
     
     def middle_element(self):
         """
@@ -180,6 +239,3 @@ class LinkedList:
         """
         pass
 
-linked_list = LinkedList()
-linked_list.append(1)
-print(linked_list)
