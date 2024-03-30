@@ -112,3 +112,20 @@ def test_pop_from_one_node():
     linked_list = ll([2, 3])
     linked_list.pop()
     assert str(linked_list) == "2 --> None"
+
+def test_middle_element():
+    linked_list = ll([1,2,3])
+    assert linked_list.middle_element() == 2
+
+def test_middle_element_of_even_sized_llist():
+    linked_list = ll([1,2,3,4])
+    assert linked_list.middle_element() == 3
+
+def test_copy():
+    linked_list = ll([1,2,3,4])
+    copy_list = linked_list.copy()
+    assert str(copy_list) == str(linked_list)
+def test_copy_empty():
+    linked_list = ll([])
+    copy_list = linked_list.copy()
+    assert str(copy_list) == str(linked_list)

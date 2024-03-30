@@ -137,6 +137,8 @@ class LinkedList:
         - value: The value to find the index of.
         Returns:
         - The index of the node if found, else -1.
+        Time - O(N)
+        Space - 
         """
         index = 0
         current = self.head
@@ -154,6 +156,8 @@ class LinkedList:
         Removes and returns the last element from the list.
         Returns:
         - The data of the popped element.
+        Time - O(N)
+        Space - 
         """
         if self.head is None:
             return None
@@ -175,28 +179,44 @@ class LinkedList:
         Appends a new node with the given value to the end of the list.
         Parameters:
         - value: The value to append.
+        Time - O(N)
+        Space - 
         """
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
     
-    def middle_element(self):
+    def middle_element(self) -> int:
         """
         Inspired from: https://leetcode.com/problems/middle-of-the-linked-list/description/
         
         Finds and returns the middle element of the list. If the list has an even number of elements, the second middle element is returned.
         Returns:
         - The data of the middle element.
+        Time - O(N)
+        Space - O(N)
         """
-        pass
+        a = self.head
+        b = self.head
+        while b and b.next is not None:
+            a = a.next
+            b = b.next.next
+        return a.data
 
     def copy(self):
         """
         Creates a shallow copy of the list.
         Returns:
         - A new LinkedList instance that is a shallow copy of the original list.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        copy_llist = LinkedList()
+        current = self.head
+        while current:
+            copy_llist.insert(current.data)
+            current = current.next
+        return copy_llist
 
     def reverse(self):
         """
@@ -204,7 +224,6 @@ class LinkedList:
         
         Reverses the list in place.
         """
-        pass
 
     def remove_duplicates(self):
         """
