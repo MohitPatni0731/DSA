@@ -231,7 +231,13 @@ class LinkedList:
         
         Removes duplicate values from the list.
         """
-        pass
+        current = self.head
+        while current:
+            next_node = current.next
+            while next_node is not None and next_node.data == current.data:
+                next_node = next_node.next
+            current.next = next
+            current = next_node 
 
     def is_palindrome(self):
         """
