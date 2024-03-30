@@ -125,6 +125,7 @@ def test_copy():
     linked_list = ll([1,2,3,4])
     copy_list = linked_list.copy()
     assert str(copy_list) == str(linked_list)
+    
 def test_copy_empty():
     linked_list = ll([])
     copy_list = linked_list.copy()

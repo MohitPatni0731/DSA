@@ -196,12 +196,18 @@ class LinkedList:
         Time - O(N)
         Space - O(N)
         """
-        a = self.head
-        b = self.head
-        while b and b.next is not None:
-            a = a.next
-            b = b.next.next
-        return a.data
+        current = self.head
+        count = 0
+        while current:
+            count += 1
+            current = current.next
+        middle  = count // 2
+        current = self.head
+        for i in range(middle):
+            current = current.next
+            middle += 1
+        return current.data
+
 
     def copy(self):
         """
@@ -264,3 +270,9 @@ class LinkedList:
         """
         pass
 
+linked_list = LinkedList()
+linked_list.insert(1)
+linked_list.insert(2)
+linked_list.insert(3)
+linked_list.insert(4)
+print(linked_list.middle_element())
