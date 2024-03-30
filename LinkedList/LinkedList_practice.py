@@ -137,6 +137,8 @@ class LinkedList:
         - value: The value to find the index of.
         Returns:
         - The index of the node if found, else -1.
+        Time - O(N)
+        Space - O(1)
         """
         index = 0
         current = self.head
@@ -154,6 +156,8 @@ class LinkedList:
         Removes and returns the last element from the list.
         Returns:
         - The data of the popped element.
+        Time - O(N)
+        Space - O(1)
         """
         if self.head is None:
             return None
@@ -175,28 +179,54 @@ class LinkedList:
         Appends a new node with the given value to the end of the list.
         Parameters:
         - value: The value to append.
+        Time - O(N)
+        Space - O(1)
         """
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
     
-    def middle_element(self):
+    def middle_element(self) -> int:
         """
         Inspired from: https://leetcode.com/problems/middle-of-the-linked-list/description/
         
         Finds and returns the middle element of the list. If the list has an even number of elements, the second middle element is returned.
         Returns:
         - The data of the middle element.
+        Time - O(N)
+        Space - O(N)
         """
-        pass
+        current = self.head
+        count = 0
 
-    def copy(self):
+        while current:
+            count += 1
+            current = current.next
+
+        middle  = count // 2
+        current = self.head
+
+        for i in range(middle):
+            current = current.next
+            middle += 1
+
+        return current.data
+
+
+    def copy(self) -> None:
         """
         Creates a shallow copy of the list.
         Returns:
         - A new LinkedList instance that is a shallow copy of the original list.
+        Time - O(N)
+        Space - O(N)
         """
-        pass
+        copy_llist = LinkedList()
+        current = self.head
+        while current:
+            copy_llist.insert(current.data)
+            current = current.next
+        return copy_llist
 
     def reverse(self):
         """
@@ -204,15 +234,22 @@ class LinkedList:
         
         Reverses the list in place.
         """
-        pass
 
-    def remove_duplicates(self):
+    def remove_duplicates(self) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
         
         Removes duplicate values from the list.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        current = self.head
+        while current:
+            next_node = current.next
+            while next_node is not None and next_node.data == current.data:
+                next_node = next_node.next
+            current.next = next_node
+            current = next_node 
 
     def is_palindrome(self):
         """
@@ -224,18 +261,43 @@ class LinkedList:
         """
         pass
 
-    def swap_nodes(self, x, y):
+    def swap_nodes(self, x: int, y: int):
         """
         Swaps the nodes with the given values x and y in the list. If x and y are the same, does nothing.
         Parameters:
         - x: The value of the first node to swap.
         - y: The value of the second node to swap.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        current = self.head
+        while current:
+            if current.data == x:
+                current.data = y
+            elif current.data == y:
+                current.data = x
+            current = current.next
 
-    def move_tail_to_head(self):
+
+    def move_tail_to_head(self) -> None:
         """
         Moves the last node of the list to be the head of the list.
+        Time - O(N)
+        Space - O(1)
         """
-        pass
+        if not self.head or not self.head.next:
+           return
+        
+        current = self.head
+        previous = None
+        
+        while current.next:
+            previous = current
+            current = current.next
+
+        previous.next = None
+        current.next = self.head
+        self.head = current
+
+        return current
 

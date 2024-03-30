@@ -112,3 +112,61 @@ def test_pop_from_one_node():
     linked_list = ll([2, 3])
     linked_list.pop()
     assert str(linked_list) == "2 --> None"
+
+def test_middle_element():
+    linked_list = ll([1,2,3])
+    assert linked_list.middle_element() == 2
+
+def test_middle_element_of_even_sized_llist():
+    linked_list = ll([1,2,3,4])
+    assert linked_list.middle_element() == 3
+
+def test_copy():
+    linked_list = ll([1,2,3,4])
+    copy_list = linked_list.copy()
+    assert str(copy_list) == str(linked_list)
+    
+def test_copy_empty():
+    linked_list = ll([])
+    copy_list = linked_list.copy()
+    assert str(copy_list) == str(linked_list)
+
+def test_move_head_to_tail():
+    linked_list = ll([1,2,3,4])
+    linked_list.move_tail_to_head()
+    assert str(linked_list) == "4 --> 1 --> 2 --> 3 --> None"
+
+def test_move_head_to_tail_size_1():
+    linked_list = ll([1])
+    linked_list.move_tail_to_head()
+    assert str(linked_list) == "1 --> None"
+
+def test_remove_duplicates():
+    linked_list = ll([1,2,2,3,4])
+    linked_list.remove_duplicates()
+    assert str(linked_list) == "1 --> 2 --> 3 --> 4 --> None"
+
+def test_remove_duplicates_with_no_duplicates():
+    linked_list = ll([1,2,3,4])
+    linked_list.remove_duplicates()
+    assert str(linked_list) == "1 --> 2 --> 3 --> 4 --> None"
+
+def test_remove_duplicates_from_empty_llist():
+    linked_list = ll([])
+    linked_list.remove_duplicates()
+    assert str(linked_list) == "None"
+
+def test_nodes():
+    linked_list = ll([1,2,3,4])
+    linked_list.swap_nodes(1,4)
+    assert str(linked_list) == "4 --> 2 --> 3 --> 1 --> None"
+
+def test_nodes_from_empty_llist():
+    linked_list = ll([])
+    linked_list.swap_nodes(1,4)
+    assert str(linked_list) == "None"
+
+def test_nodes_x_and_y_equal():
+    linked_list = ll([1,2,3])
+    linked_list.swap_nodes(1,1)
+    assert str(linked_list) == "1 --> 2 --> 3 --> None"
