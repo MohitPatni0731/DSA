@@ -138,7 +138,7 @@ class LinkedList:
         Returns:
         - The index of the node if found, else -1.
         Time - O(N)
-        Space - 
+        Space - O(1)
         """
         index = 0
         current = self.head
@@ -157,7 +157,7 @@ class LinkedList:
         Returns:
         - The data of the popped element.
         Time - O(N)
-        Space - 
+        Space - O(1)
         """
         if self.head is None:
             return None
@@ -180,7 +180,7 @@ class LinkedList:
         Parameters:
         - value: The value to append.
         Time - O(N)
-        Space - 
+        Space - O(1)
         """
         new_node = Node(data)
         new_node.next = self.head
@@ -219,7 +219,7 @@ class LinkedList:
         Returns:
         - A new LinkedList instance that is a shallow copy of the original list.
         Time - O(N)
-        Space - O(1)
+        Space - O(N)
         """
         copy_llist = LinkedList()
         current = self.head
@@ -240,6 +240,8 @@ class LinkedList:
         Inspired by: https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
         
         Removes duplicate values from the list.
+        Time - O(N^2)
+        Space - O(1)
         """
         current = self.head
         while current:
@@ -266,7 +268,7 @@ class LinkedList:
         - x: The value of the first node to swap.
         - y: The value of the second node to swap.
         Time - O(N)
-        Space - O(N)
+        Space - O(1)
         """
         current = self.head
         while current:
@@ -281,7 +283,7 @@ class LinkedList:
         """
         Moves the last node of the list to be the head of the list.
         Time - O(N)
-        Space - 
+        Space - O(1)
         """
         if not self.head or not self.head.next:
            return
