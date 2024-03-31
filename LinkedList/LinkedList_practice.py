@@ -198,14 +198,18 @@ class LinkedList:
         """
         current = self.head
         count = 0
+
         while current:
             count += 1
             current = current.next
+
         middle  = count // 2
         current = self.head
+
         for i in range(middle):
             current = current.next
             middle += 1
+
         return current.data
 
 
@@ -279,13 +283,19 @@ class LinkedList:
         Time - O(N)
         Space - 
         """
+        if not self.head or not self.head.next:
+           return
+        
         current = self.head
         previous = None
+        
         while current.next:
             previous = current
             current = current.next
+
         previous.next = None
         current.next = self.head
         self.head = current
+
         return current
 

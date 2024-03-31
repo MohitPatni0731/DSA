@@ -136,6 +136,11 @@ def test_move_head_to_tail():
     linked_list.move_tail_to_head()
     assert str(linked_list) == "4 --> 1 --> 2 --> 3 --> None"
 
+def test_move_head_to_tail_size_1():
+    linked_list = ll([1])
+    linked_list.move_tail_to_head()
+    assert str(linked_list) == "1 --> None"
+
 def test_remove_duplicates():
     linked_list = ll([1,2,2,3,4])
     linked_list.remove_duplicates()
