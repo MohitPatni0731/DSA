@@ -242,7 +242,7 @@ class LinkedList:
             next_node = current.next
             while next_node is not None and next_node.data == current.data:
                 next_node = next_node.next
-            current.next = next
+            current.next = next_node
             current = next_node 
 
     def is_palindrome(self):
@@ -262,17 +262,20 @@ class LinkedList:
         - x: The value of the first node to swap.
         - y: The value of the second node to swap.
         """
-        pass
+
 
     def move_tail_to_head(self):
         """
         Moves the last node of the list to be the head of the list.
+        Time - O(N)
+        Space - 
         """
-        pass
-
-linked_list = LinkedList()
-linked_list.insert(1)
-linked_list.insert(2)
-linked_list.insert(3)
-linked_list.insert(4)
-print(linked_list.middle_element())
+        current = self.head
+        previous = None
+        while current.next:
+            previous = current
+            current = current.next
+        previous.next = None
+        current.next = self.head
+        self.head = current
+        return current
