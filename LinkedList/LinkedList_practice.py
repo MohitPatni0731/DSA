@@ -209,7 +209,7 @@ class LinkedList:
         return current.data
 
 
-    def copy(self):
+    def copy(self) -> None:
         """
         Creates a shallow copy of the list.
         Returns:
@@ -231,7 +231,7 @@ class LinkedList:
         Reverses the list in place.
         """
 
-    def remove_duplicates(self):
+    def remove_duplicates(self) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
         
@@ -255,16 +255,25 @@ class LinkedList:
         """
         pass
 
-    def swap_nodes(self, x, y):
+    def swap_nodes(self, x: int, y: int):
         """
         Swaps the nodes with the given values x and y in the list. If x and y are the same, does nothing.
         Parameters:
         - x: The value of the first node to swap.
         - y: The value of the second node to swap.
+        Time - O(N)
+        Space - O(N)
         """
+        current = self.head
+        while current:
+            if current.data == x:
+                current.data = y
+            elif current.data == y:
+                current.data = x
+            current = current.next
 
 
-    def move_tail_to_head(self):
+    def move_tail_to_head(self) -> None:
         """
         Moves the last node of the list to be the head of the list.
         Time - O(N)
@@ -279,3 +288,4 @@ class LinkedList:
         current.next = self.head
         self.head = current
         return current
+

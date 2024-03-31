@@ -150,3 +150,18 @@ def test_remove_duplicates_from_empty_llist():
     linked_list = ll([])
     linked_list.remove_duplicates()
     assert str(linked_list) == "None"
+
+def test_nodes():
+    linked_list = ll([1,2,3,4])
+    linked_list.swap_nodes(1,4)
+    assert str(linked_list) == "4 --> 2 --> 3 --> 1 --> None"
+
+def test_nodes_from_empty_llist():
+    linked_list = ll([])
+    linked_list.swap_nodes(1,4)
+    assert str(linked_list) == "None"
+
+def test_nodes_x_and_y_equal():
+    linked_list = ll([1,2,3])
+    linked_list.swap_nodes(1,1)
+    assert str(linked_list) == "1 --> 2 --> 3 --> None"
