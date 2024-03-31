@@ -240,7 +240,7 @@ class LinkedList:
         Inspired by: https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
         
         Removes duplicate values from the list.
-        Time - O(N^2)
+        Time - O(N)
         Space - O(1)
         """
         current = self.head
