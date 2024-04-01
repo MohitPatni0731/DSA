@@ -170,3 +170,18 @@ def test_nodes_x_and_y_equal():
     linked_list = ll([1,2,3])
     linked_list.swap_nodes(1,1)
     assert str(linked_list) == "1 --> 2 --> 3 --> None"
+
+def test_reverse():
+    linked_list = ll([1,2,3,4])
+    linked_list.reverse()
+    assert str(linked_list) == "4 --> 3 --> 2 --> 1 --> None"
+
+def test_reverse_single_element():
+    linked_list = ll([1])
+    linked_list.reverse()
+    assert str(linked_list) == "1 --> None"
+
+def test_reverse_empty_llist():
+    linked_list = ll([])
+    linked_list.reverse()
+    assert str(linked_list) == "None"
