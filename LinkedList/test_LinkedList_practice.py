@@ -185,3 +185,15 @@ def test_reverse_empty_llist():
     linked_list = ll([])
     linked_list.reverse()
     assert str(linked_list) == "None"
+
+def test_palindrome1():
+    linked_list = ll([1,2,3,4])
+    assert linked_list.is_palindrome() == False
+
+def test_palindrome2():
+    linked_list = ll([1,1,1,1])
+    assert linked_list.is_palindrome() == True
+
+def test_palindrome_from_empty_llist():
+    linked_list = ll([])
+    assert str(linked_list) == "None"
