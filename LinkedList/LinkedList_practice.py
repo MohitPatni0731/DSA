@@ -228,12 +228,24 @@ class LinkedList:
             current = current.next
         return copy_llist
 
-    def reverse(self):
+    def reverse(self) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-linked-list-elements/description/
         
         Reverses the list in place.
+        Time - O(N)
+        Space - O(N)
         """
+        stack = []
+        current = self.head
+        while current:
+            stack.append(current.data)
+            current = current.next
+        
+        current = self.head
+        while current:
+            current.data = stack.pop()
+            current = current.next
 
     def remove_duplicates(self) -> None:
         """
@@ -251,15 +263,23 @@ class LinkedList:
             current.next = next_node
             current = next_node 
 
-    def is_palindrome(self):
+    def is_palindrome(self) -> None:
         """
         Inspired by: https://leetcode.com/problems/palindrome-linked-list/description/
         
         Checks if the list is a palindrome.
         Returns:
         - True if the list is a palindrome, False otherwise.
+        Time - O(N)
+        Space - O(N)
         """
-        pass
+        reversed_list = self.copy()  
+        reversed_list.reverse()      
+
+        if str(self) == str(reversed_list):
+            return True
+        else:
+            return False
 
     def swap_nodes(self, x: int, y: int):
         """
