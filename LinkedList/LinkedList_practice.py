@@ -1,8 +1,9 @@
 import pytest
 from typing import Any
 
+
 class Node:
-    def __init__(self, data) -> None: 
+    def __init__(self, data) -> None:
         """
         Initializes a new node with the specified data.
         Parameters:
@@ -13,7 +14,7 @@ class Node:
         """
         self.data = data
         self.next = None
-    
+
 
 class LinkedList:
     def __init__(self) -> None:
@@ -21,7 +22,6 @@ class LinkedList:
         Initializes a new empty linked list.
         """
         self.head = None
-
 
     def insert(self, data: Any) -> None:
         """
@@ -53,18 +53,18 @@ class LinkedList:
             result.append(" --> ")
             current_node = current_node.next
         result.append("None")
-        
-        return ''.join(result) 
 
+        return "".join(result)
 
     def print_llist(self) -> None:
-        print(str(self)) # calling str triggers __str__ function, here we have leveraged an existing function to implement another function.
-
+        print(
+            str(self)
+        )  # calling str triggers __str__ function, here we have leveraged an existing function to implement another function.
 
     def delete(self, value: Any) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-linked-list-elements/description/
-        
+
         Deletes the first occurrence of a node with the given value from the list.
         Parameters:
         - value: The value of the node to delete.
@@ -99,7 +99,7 @@ class LinkedList:
         while current_node:
             if current_node.data == value:
                 return current_node
-            current_node = current_node.next               
+            current_node = current_node.next
         return None
 
     def is_empty(self) -> bool:
@@ -129,7 +129,7 @@ class LinkedList:
             count += 1
             current_node = current_node.next
         return count
-    
+
     def index(self, value) -> int:
         """
         Returns the position (0-based index) of the first occurrence of a node with the given value.
@@ -149,7 +149,6 @@ class LinkedList:
             current = current.next
             index += 1
         return -1
-    
 
     def pop(self) -> int:
         """
@@ -167,11 +166,11 @@ class LinkedList:
             previous = current
             current = current.next
 
-        if previous is None:  
+        if previous is None:
             self.head = None
         else:
             previous.next = None
-        
+
         return current.data
 
     def append(self, data):
@@ -185,11 +184,11 @@ class LinkedList:
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
-    
+
     def middle_element(self) -> int:
         """
         Inspired from: https://leetcode.com/problems/middle-of-the-linked-list/description/
-        
+
         Finds and returns the middle element of the list. If the list has an even number of elements, the second middle element is returned.
         Returns:
         - The data of the middle element.
@@ -203,7 +202,7 @@ class LinkedList:
             count += 1
             current = current.next
 
-        middle  = count // 2
+        middle = count // 2
         current = self.head
 
         for i in range(middle):
@@ -211,7 +210,6 @@ class LinkedList:
             middle += 1
 
         return current.data
-
 
     def copy(self) -> None:
         """
@@ -231,7 +229,7 @@ class LinkedList:
     def reverse(self) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-linked-list-elements/description/
-        
+
         Reverses the list in place.
         Time - O(N)
         Space - O(N)
@@ -241,7 +239,7 @@ class LinkedList:
         while current:
             stack.append(current.data)
             current = current.next
-        
+
         current = self.head
         while current:
             current.data = stack.pop()
@@ -250,7 +248,7 @@ class LinkedList:
     def remove_duplicates(self) -> None:
         """
         Inspired by: https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
-        
+
         Removes duplicate values from the list.
         Time - O(N)
         Space - O(1)
@@ -261,20 +259,20 @@ class LinkedList:
             while next_node is not None and next_node.data == current.data:
                 next_node = next_node.next
             current.next = next_node
-            current = next_node 
+            current = next_node
 
     def is_palindrome(self) -> None:
         """
         Inspired by: https://leetcode.com/problems/palindrome-linked-list/description/
-        
+
         Checks if the list is a palindrome.
         Returns:
         - True if the list is a palindrome, False otherwise.
         Time - O(N)
         Space - O(N)
         """
-        reversed_list = self.copy()  
-        reversed_list.reverse()      
+        reversed_list = self.copy()
+        reversed_list.reverse()
 
         if str(self) == str(reversed_list):
             return True
@@ -298,7 +296,6 @@ class LinkedList:
                 current.data = x
             current = current.next
 
-
     def move_tail_to_head(self) -> None:
         """
         Moves the last node of the list to be the head of the list.
@@ -306,11 +303,11 @@ class LinkedList:
         Space - O(1)
         """
         if not self.head or not self.head.next:
-           return
-        
+            return
+
         current = self.head
         previous = None
-        
+
         while current.next:
             previous = current
             current = current.next
@@ -320,4 +317,3 @@ class LinkedList:
         self.head = current
 
         return current
-
