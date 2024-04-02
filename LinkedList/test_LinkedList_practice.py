@@ -197,3 +197,11 @@ def test_palindrome2():
 def test_palindrome_from_empty_llist():
     linked_list = ll([])
     assert str(linked_list) == "None"
+
+def test_palindrome_odd_length_llist():
+    linked_list = ll([1,2,3,2,1])
+    assert str(linked_list) == "1 --> 2 --> 3 --> 2 --> 1 --> None"
+
+def test_palindrome_of_length_one():
+    linked_list = ll([1])
+    assert str(linked_list) == "1 --> None"
