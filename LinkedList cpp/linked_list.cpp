@@ -11,6 +11,8 @@ public:
     Node* next;
 
     Node(int data) {
+        /* Time - O(1)
+        Space - O(1) */
         this->data = data;
         this->next = nullptr;
     }
@@ -21,10 +23,14 @@ public:
     Node* head;
 
     LinkedList() {
+        /* Time - O(1)
+        Space - O(1) */
         head = nullptr;
     }
 
     void insert(int data) {
+        /* Time - O()
+        Space - O() */
         Node* new_node = new Node(data);
         if (head == nullptr) {
             head = new_node;
@@ -37,6 +43,8 @@ public:
         }
     }
     void print() {
+        /* Time - O(N)
+        Space - O(1) */
         Node* current = head;
         while (current != nullptr) {
             cout<<current->data;
@@ -47,6 +55,8 @@ public:
     }
 
     void delete_node(int data) {
+        /* Time - O(N)
+        Space - O(1) */
         Node* current = head;
         Node* previous = nullptr;
         while (current != nullptr) {
@@ -66,6 +76,8 @@ public:
     }
 
     Node* search(int data) {
+        /* Time - O(N)
+        Space - O(1) */
         Node* current = head;
         while (current != nullptr) {
             if (current->data == data) {
@@ -77,6 +89,8 @@ public:
     }
 
     bool is_empty() {
+        /* Time - O(1)
+        Space - O(1) */
         if (head == nullptr) {
             return true;
         }
@@ -86,6 +100,8 @@ public:
     }
 
     int size() {
+        /* Time - O(N)
+        Space - O(1) */
         Node* current = head;
         int count = 0;
         while (current != nullptr) {
@@ -96,6 +112,8 @@ public:
     }
 
     int index(int data) {
+        /* Time - O(N)
+        Space - O(1) */
         int index = 0;
         Node* current = head;
         while (current != nullptr) {
@@ -109,6 +127,8 @@ public:
     }
 
     int pop() {
+        /* Time - O(N)
+        Space - O(1) */
         if (head == nullptr) {
             return -1;
         }
@@ -131,12 +151,16 @@ public:
     }
 
     void append(int data) {
+        /* Time - O(N)
+        Space - O(1) */
         Node* new_node = new Node(data);
         new_node->next = head;
         head = new_node;
     }
 
     int middle_element() {
+        /* Time - O(N)
+        Space - O(1) */
         Node* current = head;
         int count = 0;
 
@@ -157,6 +181,8 @@ public:
     }
 
     LinkedList* copy() {
+        /* Time - O(N)
+        Space - O(1) */
         LinkedList* copy_llist = new LinkedList();
         Node* current = head;
 
@@ -168,6 +194,8 @@ public:
     }
 
     void remove_duplicate() {
+        /* Time - O(N)
+        Space - O(1) */
         Node* current = head;
         while (current != nullptr) {
             Node* next_node = current;
@@ -181,6 +209,8 @@ public:
     }
 
     void swap_nodes(int x, int y) {
+        /* Time - O(N)
+        Space - O(1) */
         Node* current = head;
         while (current != nullptr) {
             if (current->data == x) {
@@ -194,6 +224,8 @@ public:
     }
 
     void move_head_to_tail() {
+        /* Time - O(N)
+        Space - O(1) */
         Node* current = head;
         Node* previous = nullptr;
         while (current->next != nullptr) {
@@ -208,24 +240,28 @@ public:
     }
 
     void reverse() {
-    std::stack<int> stack;
-    Node* current = head;
+        /* Time - O(N)
+        Space - O(N) */
+        std::stack<int> stack;
+        Node* current = head;
 
-    while (current != nullptr) {
-        stack.push(current->data);
-        current = current->next;
-    }
+        while (current != nullptr) {
+            stack.push(current->data);
+            current = current->next;
+        }
 
-    current = head;
-    
-    while (current != nullptr) {
-        current->data = stack.top();
-        stack.pop();
-        current = current->next;
-    }
+        current = head;
+        
+        while (current != nullptr) {
+            current->data = stack.top();
+            stack.pop();
+            current = current->next;
+        }
     }
 
     bool is_plaindrome() {
+        /* Time - O(N)
+        Space - O(N) */
         LinkedList* reversedList = copy();
         reversedList->reverse();
 
