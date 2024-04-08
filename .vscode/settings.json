@@ -3,5 +3,13 @@
         "div4"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "files.associations": {
+        "iostream": "cpp",
+        "new": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "ostream": "cpp"
+    }
 }
