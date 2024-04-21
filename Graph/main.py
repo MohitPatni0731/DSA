@@ -11,13 +11,11 @@ class Graph:
         Time - O(1)
         Space - O(1)
         """
-        if node_1 not in self.adjacency_list:
-            self.adjacency_list[node_1] = []
-        if node_2 not in self.adjacency_list:
-            self.adjacency_list[node_2] = []
+        self.add_vertext(node_1)
+        self.add_vertex(node_2)
+          
         self.adjacency_list[node_1].append(node_2)
         self.adjacency_list[node_2].append(node_1)
-
     def add_vertex(self, vertex) -> None:
         """
         Time -
