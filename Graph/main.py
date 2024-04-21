@@ -16,7 +16,7 @@ class Graph:
           
         self.adjacency_list[node_1].append(node_2)
         self.adjacency_list[node_2].append(node_1)
-    def add_vertex(self, vertex) -> None:
+    def _add_vertex(self, vertex) -> None:
         """
         Time -
         Space -
