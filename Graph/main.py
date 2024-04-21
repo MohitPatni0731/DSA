@@ -23,11 +23,13 @@ class Graph:
         Time -
         Space -
         """
+        if vertex not in self.adjacency_list:
+            self.adjacency_list[vertex] = []
 
-    def is_empty(self) -> None:
+    def is_empty(self) -> bool:
         """
-        Time -
-        Space -
+        Time - O(1)
+        Space - O(1)
         """
         return len(self.adjacency_list) == 0
 
@@ -39,8 +41,8 @@ class Graph:
 
     def size_of_edges(self) -> None:
         """
-        Time -
-        Space -
+        Time - O(N)
+        Space - O(1)
         """
         length = 0
         for edge in self.adjacency_list:
@@ -49,8 +51,8 @@ class Graph:
 
     def remove_edge(self, node_1, node_2) -> None:
         """
-        Time -
-        Space -
+        Time - O(1)
+        Space - O(1)
         """
         if node_1 and node_2 in self.adjacency_list:
             self.adjacency_list[node_1].remove(node_2)
@@ -74,11 +76,10 @@ class Graph:
 graph = Graph()
 graph.add_edge("A", "B")
 graph.add_edge("B", "C")
-graph.add_edge("B", "D")
-graph.add_edge("D", "E")
-graph.add_edge("E", "A")
 graph.print_graph()
 graph.size_of_edges()
 graph.is_empty()
 graph.remove_edge("A", "B")
+graph.print_graph()
+graph.add_vertex("F")
 graph.print_graph()
