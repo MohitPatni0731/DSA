@@ -54,7 +54,7 @@ class Graph:
         Time - O(1)
         Space - O(1)
         """
-        if node_1 and node_2 in self.adjacency_list:
+        if node_1 in self.adjacency_list and node_2 in self.adjacency_list:
             self.adjacency_list[node_1].remove(node_2)
             self.adjacency_list[node_2].remove(node_1)
 
