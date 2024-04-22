@@ -1,4 +1,5 @@
 from typing import Any
+from collections import defaultdict
 
 
 class Graph:
@@ -7,26 +8,15 @@ class Graph:
         Time - O(1)
         Space - O(1)
         """
-        self.adjacency_list = {}
+        self.adjacency_list = defaultdict(list)
 
-    def add_edge(self, node1, node2) -> None:
+    def add_edge(self, node1: Any, node2: Any) -> None:
         """
         Time - O(1)
         Space - O(1)
         """
-        self._add_vertex(node1)
-        self._add_vertex(node2)
-
         self.adjacency_list[node1].append(node2)
         self.adjacency_list[node2].append(node1)
-
-    def _add_vertex(self, vertex) -> None:
-        """
-        Time - O(1)
-        Space - O(1)
-        """
-        if vertex not in self.adjacency_list:
-            self.adjacency_list[vertex] = []
 
     def is_empty(self) -> bool:
         """
@@ -35,12 +25,12 @@ class Graph:
         """
         return len(self.adjacency_list) == 0
 
-    def size_of_vertices(self) -> None:
+    def size_of_vertices(self) -> int:
         """
         Time - O(1)
         Space - O(1)
         """
-        print(len(self.adjacency_list))
+        return len(self.adjacency_list)
 
     def size_of_edges(self) -> None:
         """
@@ -61,7 +51,7 @@ class Graph:
             self.adjacency_list[node1].remove(node2)
             self.adjacency_list[node2].remove(node1)
 
-    def remove_vertex(self, vertex) -> None:
+    def remove_vertex(self, vertex: str) -> None:
         """
         Time - O(1)
         Space - O(1)
@@ -75,17 +65,5 @@ class Graph:
         Space - O(1)
         """
         for node in self.adjacency_list:
-            print(node, " -> ", self.adjacency_list[node])
-
-
-graph = Graph()
-graph.add_edge("A", "B")
-graph.add_edge("B", "C")
-graph.print_graph()
-graph.size_of_edges()
-graph.is_empty()
-graph.remove_edge("A", "B")
-graph.print_graph()
-graph._add_vertex("F")
-graph.print_graph()
-graph.size_of_vertices()
+            print(node, " -> ")
+            print(", ".join(self.adjacency_list[node]))
