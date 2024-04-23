@@ -26,7 +26,7 @@ def test_add_edge_string():
 def test_add_edge_same_value():
     graph = Graph()
     graph.add_edge(1, 1)
-    assert graph.adjacency_list == {1: [1, 1]}
+    assert graph.adjacency_list == {1: [1]}
 
 
 def test_add_edge_empty_edge():
