@@ -56,8 +56,16 @@ class Graph:
         Time - O(1)
         Space - O(1)
         """
-        if vertex in self.adjacency_list:
-            del self.adjacency_list[vertex]
+        if vertex not in self.adjacency_list:
+            return None
+           
+        # First remove this vertex from all of its neighbour's adjacency list
+        for neighbour in self.adjacency_list[vertex]: # iterating of a list is O(N)
+              self.adjacency_list[neighbour].remove(vertex) # remove method on a list is O(N)
+        # Overall time complexity of above snippet is O(N) * O (N) = O(N*N)
+
+        # Remove this vertex now after its reference is removed from everywhere
+        del self.adjacency_list[vertex] #  O(1)
 
     def print_graph(self) -> None:
         """
