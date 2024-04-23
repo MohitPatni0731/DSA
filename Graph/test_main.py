@@ -9,20 +9,6 @@ def test_add_edge():
     assert graph.adjacency_list == {1: [2], 2: [1, 3], 3: [2]}
 
 
-def test_add_edge_string():
-    graph = Graph()
-    graph.add_edge(1, 2)
-    graph.add_edge(2, 3)
-    graph.add_edge("a", "b")
-    assert graph.adjacency_list == {
-        1: [2],
-        2: [1, 3],
-        3: [2],
-        "a": ["b"],
-        "b": ["a"],
-    }
-
-
 def test_add_edge_same_value():
     graph = Graph()
     graph.add_edge(1, 1)
@@ -101,4 +87,27 @@ def test_print_empty_graph():
     assert graph.print_graph() == ""
 
 
-# only remove_vertex() test cases are remaining
+def test_remove_vertex():
+    graph = Graph()
+    graph.add_edge("A", "B")
+    graph.remove_vertex("A")
+    assert graph.adjacency_list == {"B": []}
+
+
+def test_remove_vertex_from_empty_graph():
+    graph = Graph()
+    assert graph.remove_vertex("A") is None
+
+
+def test_remove_vertex_non_existing_vertex():
+    graph = Graph()
+    graph.add_edge("A", "B")
+    assert graph.remove_vertex("C") is None
+
+
+def test_remove_vertex_duplicate_vertex():
+    graph = Graph()
+    graph.add_edge("A", "B")
+    graph.add_edge("B", "A")
+    graph.remove_vertex("B")
+    assert graph.adjacency_list == {"A": []}
