@@ -32,7 +32,7 @@ class Graph:
         """
         return len(self.adjacency_list)
 
-    def size_of_edges(self) -> None:
+    def size_of_edges(self) -> int:
         """
         Time - O(N)
         Space - O(1)
@@ -40,7 +40,7 @@ class Graph:
         length = 0
         for edge in self.adjacency_list:
             length += len(self.adjacency_list[edge])
-        print(length // 2)
+        return length // 2
 
     def remove_edge(self, node1: Any, node2: Any) -> None:
         """
@@ -64,6 +64,7 @@ class Graph:
         Time - O(N)
         Space - O(1)
         """
+        graph_in_str = ""
         for node in self.adjacency_list:
-            print(node, " -> ")
-            print(", ".join(self.adjacency_list[node]))
+            graph_in_str += node + " -> " + ", ".join(self.adjacency_list[node]) + "\n"
+        return graph_in_str

@@ -7,3 +7,98 @@ def test_add_edge():
     graph.add_edge(1, 2)
     graph.add_edge(2, 3)
     assert graph.adjacency_list == {1: [2], 2: [1, 3], 3: [2]}
+
+
+def test_add_edge_string():
+    graph = Graph()
+    graph.add_edge(1, 2)
+    graph.add_edge(2, 3)
+    graph.add_edge("a", "b")
+    assert graph.adjacency_list == {
+        1: [2],
+        2: [1, 3],
+        3: [2],
+        "a": ["b"],
+        "b": ["a"],
+    }
+
+
+def test_add_edge_same_value():
+    graph = Graph()
+    graph.add_edge(1, 1)
+    assert graph.adjacency_list == {1: [1, 1]}
+
+
+def test_add_edge_empty_edge():
+    graph = Graph()
+    assert graph.add_edge(None, None) is None
+
+
+def test_is_empty():
+    graph = Graph()
+    assert graph.is_empty() == True
+
+
+def test_is_empty_not():
+    graph = Graph()
+    graph.add_edge(1, 2)
+    assert graph.is_empty() == False
+
+
+def test_size_of_vertices():
+    graph = Graph()
+    graph.add_edge(1, 2)
+    graph.add_edge(2, 3)
+    assert graph.size_of_vertices() == 3
+
+
+def test_size_of_vertices_empty_graph():
+    graph = Graph()
+    assert graph.size_of_vertices() == 0
+
+
+def test_size_of_edges():
+    graph = Graph()
+    graph.add_edge(1, 2)
+    graph.add_edge(2, 3)
+    assert graph.size_of_edges() == 2
+
+
+def test_size_of_edges_empty_graph():
+    graph = Graph()
+    assert graph.size_of_edges() == 0
+
+
+def test_remove_edge():
+    graph = Graph()
+    graph.add_edge(1, 2)
+    graph.add_edge(2, 3)
+    graph.add_edge(3, 4)
+    graph.remove_edge(1, 2)
+    assert graph.adjacency_list == {1: [], 2: [3], 3: [2, 4], 4: [3]}
+
+
+def test_remove_edge_non_existing():
+    graph = Graph()
+    graph.add_edge(1, 2)
+    graph.add_edge(2, 3)
+    assert graph.remove_edge(4, 5) == None
+
+
+def test_remove_edge_empty_graph():
+    graph = Graph()
+    assert graph.remove_edge(1, 2) == None
+
+
+def test_print():
+    graph = Graph()
+    graph.add_edge("A", "B")
+    assert graph.print_graph() == "A -> B\nB -> A\n"
+
+
+def test_print_empty_graph():
+    graph = Graph()
+    assert graph.print_graph() == ""
+
+
+# only remove_vertex() test cases are remaining
