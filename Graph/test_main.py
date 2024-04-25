@@ -11,8 +11,9 @@ def test_add_edge():
 
 def test_add_edge_same_value():
     graph = Graph()
-    graph.add_edge(1, 1)
-    assert graph.adjacency_list == {1: [1]}
+    graph.add_edge(1, 2)
+    graph.add_edge(1, 2)
+    assert graph.adjacency_list == {1: [2, 2], 2: [1, 1]}
 
 
 def test_add_edge_empty_edge():
