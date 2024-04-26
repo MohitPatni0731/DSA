@@ -1,29 +1,29 @@
 class BinaryTree:
     def __init__(self, data) -> None:
         self.data = data
-        self.leftChild = None
-        self.rightChild = None
+        self.left_child = None
+        self.right_child = None
 
-    def insert_leftChild(self, data):
-        if self.leftChild is None:
-            self.leftChild = BinaryTree(data)
+    def insert_left(self, data):
+        if self.left_child is None:
+            self.left_child = BinaryTree(data)
         else:
-            print("Left child already exis.")
+            raise ValueError("Left child already exists.")
 
-    def insert_rightChild(self, data):
-        if self.rightChild is None:
-            self.rightChild = BinaryTree(data)
+    def insert_right(self, data):
+        if self.right_child is None:
+            self.right_child = BinaryTree(data)
         else:
-            print("Right child already exist")
+            raise ValueError("Rihgt child already exists.")
 
-    def getRightChild(self):
-        return self.rightChild
+    def get_right(self):
+        return self.right_child
 
-    def getLeftChild(self):
-        return self.leftChild
+    def get_left(self):
+        return self.left_child
 
-    def setRootVal(self, obj):
+    def set_root(self, obj):
         self.data = obj
 
-    def getRootVal(self):
+    def get_root(self):
         return self.data
