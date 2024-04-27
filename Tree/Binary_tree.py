@@ -7,18 +7,16 @@ class BinaryTree:
     def insert_left(self, data):
         if self.left_child is None:
             self.left_child = BinaryTree(data)
+            return self.left_child
         else:
-            t = BinaryTree(data)
-            t.left_child = self.left_child
-            self.left_child = t
+            raise ValueError("Left child already exists.")
 
     def insert_right(self, data):
         if self.right_child is None:
             self.right_child = BinaryTree(data)
+            return self.right_child
         else:
-            t = BinaryTree(data)
-            t.right_child = self.right_child
-            self.right_child = t
+            raise ValueError("Right child already exists.")
 
     def get_right(self):
         return self.right_child
@@ -33,25 +31,38 @@ class BinaryTree:
         return self.data
 
     def preorder(self):
+        preorder = []
         if self:
-            print(self.get_root())
+            preorder.append(self.get_root())
             if self.get_left():
-                self.get_left().preorder()
+                preorder += self.get_left().preorder()
             if self.get_right():
-                self.get_right().preorder()
+                preorder += self.get_right().preorder()
+        return preorder
 
     def inorder(self):
+        inorder = []
         if self:
             if self.get_left():
-                self.get_left().inorder()
-            print(self.get_root())
+                inorder += self.get_left().inorder()
+            inorder.append(self.get_root())
             if self.get_right():
-                self.get_right().inorder()
+                inorder += self.get_right().inorder()
+        return inorder
 
     def postorder(self):
+        postorder = []
         if self:
             if self.get_left():
-                self.get_left().postorder()
+                postorder += self.get_left().postorder()
             if self.get_right():
-                self.get_right().postorder()
-            print(self.get_root())
+                postorder += self.get_right().postorder()
+            postorder.append(self.get_root())
+        return postorder
+
+
+r = BinaryTree(1)
+r.insert_left(2)
+r.insert_right(3)
+r.get_left().insert_left(4)
+print(r.preorder())
