@@ -17,6 +17,9 @@ class BST:
         Time - O(N)
         Space - O(N)
         """
+        if root is None:
+          self.root = BinaryTree(data)
+         
         if data < self.data:
             if self.left == None:
                 self.left = BST(data)
@@ -27,7 +30,6 @@ class BST:
                 self.right = BST(data)
             else:
                 self.right.insert(data)
-
     def preorder(self) -> List[Any]:
         """
         Time - O(N)
