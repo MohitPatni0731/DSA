@@ -17,7 +17,7 @@ class BST:
         Time - O(N)
         Space - O(N)
         """
-        if self is None:
+        if data is None:
             self.root = BST(data)
 
         if data < self.data:
