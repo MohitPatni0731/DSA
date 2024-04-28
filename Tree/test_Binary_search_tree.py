@@ -56,3 +56,11 @@ def test_insert_left_and_right():
     assert tree.preorder() == [5, 3, 7]
     assert tree.inorder() == [3, 5, 7]
     assert tree.postorder() == [3, 7, 5]
+
+
+def test_search(setup_tree_for_testing):
+    assert setup_tree_for_testing.search(1) == True
+
+
+def test_search_non_existing(setup_tree_for_testing):
+    assert setup_tree_for_testing.search(11) == False

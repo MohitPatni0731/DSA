@@ -72,3 +72,21 @@ class BST:
                 postorder += self.right.postorder()
             postorder.append(self.data)
         return postorder
+
+    def search(self, key: Any) -> bool:
+        """
+        Time - O(N)
+        Space - O(1)
+        """
+        if self is None:
+            return False
+
+        if key == self.data:
+            return True
+        elif key < self.data:
+            if self.left:
+                return self.left.search(key)
+        elif key > self.data:
+            if self.right:
+                return self.right.search(key)
+        return False
