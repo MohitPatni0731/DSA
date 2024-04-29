@@ -51,11 +51,13 @@ def test_insert_right():
 
 def test_insert_left_and_right():
     tree = BST(5)
+    tree.insert(5)
+    tree.insert(15)
     tree.insert(3)
     tree.insert(7)
-    assert tree.preorder() == [5, 3, 7]
-    assert tree.inorder() == [3, 5, 7]
-    assert tree.postorder() == [3, 7, 5]
+    assert tree.preorder() == [10, 5, 3, 7, 15]
+    assert tree.inorder() == [3, 5, 7, 10, 15]
+    assert tree.postorder() == [3, 7, 5, 15, 10]
 
 
 def test_search(setup_tree_for_testing):
@@ -64,3 +66,15 @@ def test_search(setup_tree_for_testing):
 
 def test_search_non_existing(setup_tree_for_testing):
     assert setup_tree_for_testing.search(11) == False
+
+
+def test_delete_one_child_or_leaf_node():
+    t = BST(1)
+    t.insert(2)
+    t.insert(3)
+    t.insert(4)
+    t.insert(5)
+    t.insert(6)
+    t.insert(7)
+    t.delete(6)
+    assert t.preorder() == [1, 2, 3, 6, 5, 7]

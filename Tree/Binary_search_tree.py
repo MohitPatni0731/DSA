@@ -90,3 +90,16 @@ class BST:
             if self.right:
                 return self.right.search(key)
         return False
+
+    def delete(self, key: Any) -> None:
+        if key < self.data:
+            if self.left:
+                self.left = self.left.delete(key)
+        elif key > self.data:
+            if self.right:
+                self.right = self.right.delete(key)
+        else:
+            if self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.left
