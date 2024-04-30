@@ -99,7 +99,20 @@ class BST:
             if self.right:
                 self.right = self.right.delete(key)
         else:
-            if self.left is None:
+            if self.left is None and self.right is None:
+                return None
+            elif self.left is None:
                 return self.right
             elif self.right is None:
                 return self.left
+            else:
+                sucessor = self.right.min()
+                self.data = sucessor.data
+                self.right = self.right.delete(sucessor.data)
+        return self
+
+    def min(self):
+        current = self
+        while current.left:
+            current = current.left
+        return current
