@@ -86,3 +86,47 @@ def test_delete_node_with_two_child(setup_tree_for_testing):
 def test_delete_non_existing(setup_tree_for_testing):
     setup_tree_for_testing.delete(10)
     assert setup_tree_for_testing.preorder() == [1, 2, 3, 6, 5, 7]
+
+
+@pytest.fixture
+def YT_tree_for_testing():
+    t = BST(25)
+    t.insert(10)
+    t.insert(35)
+    t.insert(5)
+    t.insert(3)
+    t.insert(6)
+    t.insert(20)
+    t.insert(15)
+    t.insert(13)
+    t.insert(21)
+    t.insert(40)
+    t.insert(37)
+    return t
+
+
+def test_YT_delete_leaf_node(YT_tree_for_testing):
+    YT_tree_for_testing.delete(37)
+    assert YT_tree_for_testing.preorder() == [
+        25,
+        10,
+        5,
+        3,
+        6,
+        20,
+        15,
+        13,
+        21,
+        35,
+        40,
+    ]
+
+
+def test_YT_delete_one_child_node(YT_tree_for_testing):
+    YT_tree_for_testing.delete(35)
+    assert YT_tree_for_testing.preorder() == [25, 10, 5, 3, 6, 20, 15, 13, 21, 40, 37]
+
+
+def test_YT_delete_two_child_node(YT_tree_for_testing):
+    YT_tree_for_testing.delete(10)
+    assert YT_tree_for_testing.preorder() == [25, 13, 5, 3, 6, 20, 15, 21, 35, 40, 37]
