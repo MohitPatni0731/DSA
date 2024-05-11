@@ -10,10 +10,8 @@ public:
     vector<vector<int>> adjacency_matrix;
 
 public:
-    Graph(int num_vertices) {
-        vertices = num_vertices;
-        adjacency_matrix = vector<vector<int>>(num_vertices, vector<int>(num_vertices, 0));
-    }
+    Graph(int vertices) : vertices(vertices), adjacency_matrix(vertices, vector<int>(vertices, 0)) {}
+
 
     void add_edge(int node1, int node2) {       
         adjacency_matrix[node1][node2] = 1;
