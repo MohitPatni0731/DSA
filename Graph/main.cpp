@@ -48,6 +48,16 @@ public:
         adjacency_matrix[node1][node2] = 0;
         adjacency_matrix[node2][node1] = 0;
     }
+
+    void print_graph() {
+        for (int i = 0; i < vertices; ++i) {
+            for (int j = 0; j < vertices; ++j) {
+                if (adjacency_matrix[i][j] == 1) {
+                    cout << i << " -> " << j << endl;
+                }
+            }
+        }
+    }
 };
 
 void test_add_edge() {
