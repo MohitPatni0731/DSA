@@ -13,7 +13,7 @@ public:
     Graph(int vertices) : vertices(vertices), adjacency_matrix(vertices, vector<int>(vertices, 0)) {}
 
 
-    void add_edge(int node1, int node2) {       
+    void add_edge(int node1, int node2) { 
         adjacency_matrix[node1][node2] = 1;
         adjacency_matrix[node2][node1] = 1;
     }
@@ -99,10 +99,17 @@ void test_size_of_vertices() {
     cout << "3: test_size_of_vertices() passed!" << endl;
 }
 
+void test_empty_graph() {
+    Graph graph2(0);
+    assert(graph2.is_empty());
+    cout << "4: test_empty_graph() passed!" << endl;
+}
+
 int main() {
     test_add_edge();
     test_is_empty();
     test_size_of_vertices();
     test_size_of_edges();
     test_remove_edge();
+    test_empty_graph();
 }
