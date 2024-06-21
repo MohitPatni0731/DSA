@@ -1,6 +1,3 @@
-import heapq
-
-
 class PriorityQueue:
     def __init__(self):
         self.queue = []
@@ -8,9 +5,16 @@ class PriorityQueue:
     def insert(self, item) -> int:
         """
         Time - O(N)
-        Space -
+        Space - O(N)
         """
-        heapq.heappush(self.queue, item)
+        if self.queue is None:
+            self.queue.append(item)
+        else:
+            for i in range(len(self.queue)):
+                if self.queue[i] > item:
+                    self.queue.insert(i, item)
+                    break
+            self.queue.append(item)
 
     def pop(self) -> int:
         """
@@ -18,7 +22,7 @@ class PriorityQueue:
         Space - O(1)
         """
         if self.queue:
-            return heapq.heappop(self.queue)
+            return self.queue.pop(0)
 
     def peek(self) -> int:
         """
