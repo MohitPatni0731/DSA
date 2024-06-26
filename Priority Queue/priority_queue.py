@@ -1,33 +1,28 @@
 class PriorityQueue:
     def __init__(self):
+        """
+        Time - O(1)
+        Space - O(1)
+        """
         self.queue = []
 
-    def insert(self, item) -> int:
-        """
-        Time - O(N)
-        Space - O(N)
-        """
-        if self.queue is None:
-            self.queue.append(item)
-        else:
-            for i in range(len(self.queue)):
-                if self.queue[i] > item:
-                    self.queue.insert(i, item)
-                    break
-            self.queue.append(item)
-
-    def pop(self) -> int:
+    def parent(self, i) -> int:
         """
         Time - O(1)
         Space - O(1)
         """
-        if self.queue:
-            return self.queue.pop(0)
+        return (i - 1) // 2
 
-    def peek(self) -> int:
+    def leftChild(self, i) -> int:
         """
         Time - O(1)
         Space - O(1)
         """
-        if self.queue:
-            return self.queue[0]
+        return (2 * i) + 1
+
+    def rightChild(self, i) -> int:
+        """
+        Time - O(1)
+        Space - O(1)
+        """
+        return (2 * i) + 2
