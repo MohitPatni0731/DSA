@@ -41,7 +41,7 @@ class PriorityQueue:
         """
         return len(self.queue) == 0
 
-    def heapify(self, i) -> None:
+    def heapifyUp(self, i) -> None:
         """
         Time - O(N)
         Space - O(N)
@@ -49,6 +49,7 @@ class PriorityQueue:
         while i > 0 and self.queue[self.parent(i)] < self.queue[i]:
             p = self.parent(i)
             self.queue[i], self.queue[p] = self.queue[p], self.queue[i]
+            i = p
 
     def insert(self, item) -> int:
         """
@@ -56,7 +57,7 @@ class PriorityQueue:
         Space - O(N)
         """
         self.queue.append(item)
-        self.heapifyUp(self.queue)
+        self.heapifyUp(len(self.queue) - 1)
 
     def print_queue(self) -> None:
         """
