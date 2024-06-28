@@ -51,6 +51,21 @@ class PriorityQueue:
             self.queue[i], self.queue[p] = self.queue[p], self.queue[i]
             i = p
 
+    def heapifyDown(self, i) -> None:
+        """
+        Time - O(N)
+        Space - O(1)
+        """
+        left = self.left_child(i)
+        right = self.right_child(i)
+        largest = i
+        while self.queue:
+            if left and self.queue[left] > self.queue[largest]:
+                largest = left
+
+            if right and self.queue[right] > self.queue[largest]:
+                largest = right
+
     def insert(self, item) -> int:
         """
         Time - O(N)
