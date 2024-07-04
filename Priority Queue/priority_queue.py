@@ -27,7 +27,7 @@ class PriorityQueue:
         """
         return (2 * i) + 2
 
-    def peek(self) -> int:
+    def peek(self) -> int | None:
         """
         Time - O(1)
         Space - O(1)
@@ -44,7 +44,7 @@ class PriorityQueue:
     def heapifyUp(self, i) -> None:
         """
         Time - O(N)
-        Space - O(N)
+        Space - O(1)
         """
         while i > 0 and self.queue[self.parent(i)] < self.queue[i]:
             p = self.parent(i)
@@ -66,10 +66,13 @@ class PriorityQueue:
             if right and self.queue[right] > self.queue[largest]:
                 largest = right
 
-    def insert(self, item) -> int:
+            if largest != i:
+                self.queue[i], self.queue[largest] = self.queue[largest], self.queue[i]
+
+    def insert(self, item) -> None:
         """
         Time - O(N)
-        Space - O(N)
+        Space - O(1)
         """
         self.queue.append(item)
         self.heapifyUp(len(self.queue) - 1)
@@ -77,6 +80,6 @@ class PriorityQueue:
     def print_queue(self) -> None:
         """
         Time - O(N)
-        Space - O(N)
+        Space - O(1)
         """
         return self.queue
