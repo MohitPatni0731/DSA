@@ -1,10 +1,11 @@
 class PriorityQueue:
-    def __init__(self):
+    def __init__(self, is_min_heap=True):
         """
         Time - O(1)
         Space - O(1)
         """
         self.queue = []
+        self.is_min_heap = is_min_heap
 
     def parent(self, i) -> int:
         """
@@ -56,8 +57,8 @@ class PriorityQueue:
         Time - O(N)
         Space - O(1)
         """
-        left = self.left_child(i)
-        right = self.right_child(i)
+        left = self.leftChild(i)
+        right = self.rightChild(i)
         largest = i
         while self.queue:
             if left and self.queue[left] > self.queue[largest]:
@@ -68,6 +69,8 @@ class PriorityQueue:
 
             if largest != i:
                 self.queue[i], self.queue[largest] = self.queue[largest], self.queue[i]
+            else:
+                break
 
     def insert(self, item) -> None:
         """
@@ -75,7 +78,10 @@ class PriorityQueue:
         Space - O(1)
         """
         self.queue.append(item)
-        self.heapifyUp(len(self.queue) - 1)
+        if self.is_min_heap:
+            self.heapifyUp(len(self.queue) - 1)
+        else:
+            self.heapifyDown(len(self.queue) - 1)
 
     def print_queue(self) -> None:
         """

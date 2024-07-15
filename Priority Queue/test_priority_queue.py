@@ -33,3 +33,10 @@ def test_priority_queue_print_queue():
     assert pq.print_queue() == [20, 10, 5]
     pq.insert(15)
     assert pq.print_queue() == [20, 15, 5, 10]
+
+
+def test_heapifydown():
+    pq = PriorityQueue(is_min_heap=False)
+    pq.queue = [3, 1, 2]
+    pq.heapifyDown(0)
+    assert pq.queue == [3, 1, 2]
